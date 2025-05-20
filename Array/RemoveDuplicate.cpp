@@ -1,14 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool SortedOrNOt(int arr[],int n){
-    for(int i = 1 ;i < n; i ++){
-        if(arr[i] < arr[i - 1]){
-            return false;
+int removeDuplicate(int arr[] , int n){
+    int i = 0;
+    for(int j = 1; j < n ; j++){
+        if(arr[i] != arr[j]){
+             i++;
+            arr[i] = arr[j];
+           
         }
-        
     }
-    return true;
+    return i+1;
 }
 int main() {
     int n;
@@ -22,12 +24,10 @@ int main() {
         cin >> arr[i];
     }
 
-    if(SortedOrNOt(arr,n)){
-        cout << "The array is sorted";
+    int newLength = removeDuplicate(arr,n);
+    for(int i = 0 ; i < newLength ; i++){
+cout << arr[i];
+    }
 
-    }
-    else {
-    cout <<"not sorted";
-    }
     return 0;
 }
